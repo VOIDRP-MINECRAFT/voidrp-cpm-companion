@@ -1,0 +1,15 @@
+This project skeleton includes gradlew scripts and gradle-wrapper.properties,
+but the binary file gradle-wrapper.jar was not bundled by the generation environment.
+
+Recovery options:
+1. If you have Gradle installed locally:
+   gradle wrapper --gradle-version 8.8
+
+2. Or copy these files from any clean Gradle 8.8 project:
+   - gradle/wrapper/gradle-wrapper.jar
+   - gradlew
+   - gradlew.bat
+
+3. After that, run:
+   gradlew.bat tasks
+   gradlew.bat runClient
