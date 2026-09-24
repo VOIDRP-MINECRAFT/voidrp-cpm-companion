@@ -6,22 +6,46 @@
 ![NeoForge](https://img.shields.io/badge/NeoForge-21.1.x-orange)
 ![Java](https://img.shields.io/badge/Java-21-ED8B00?logo=openjdk&logoColor=white)
 ![Requires CPM](https://img.shields.io/badge/requires-CPM_0.6%2B-blueviolet)
+[![Build](https://github.com/VOIDRP-MINECRAFT/voidrp-cpm-companion/actions/workflows/build.yml/badge.svg)](https://github.com/VOIDRP-MINECRAFT/voidrp-cpm-companion/actions/workflows/build.yml)
 ![License](https://img.shields.io/badge/license-proprietary-red)
 
 ---
 
 ## 🗺️ Место в экосистеме
 
+```mermaid
+flowchart LR
+    ADM["🛠️ Администратор<br/>/vc grant игрок предмет"]
+    P["🧍 Игрок<br/>/vc equip · unequip · list"]
+    subgraph SRV["Сервер + voidrp-cpm-companion"]
+        CM["CosmeticsManager"]
+        MOD[("config/voidrp-cpm/models<br/>.cpmproject + .bbmodel")]
+        DS[("players.json")]
+    end
+    B[("minecraft-backend<br/>/server/auth/player-skin")]
+    CL["🎮 Клиенты + CPM"]
+
+    ADM --> CM
+    P --> CM
+    CM <--> DS
+    MOD --> CM
+    CM -- "скин игрока" --> B
+    CM -- "модель: шаблон + скин<br/>CPM network protocol" --> CL
 ```
-  Администратор: /vc grant <player> <item>
-        │
-  voidrp-cpm-companion (NeoForge, сервер)
-        │ CPM network protocol
-        ▼
-  Minecraft Client + CPM mod
-        │ GET /api/v1/server/auth/player-skin/<nick>
-        ▼
-  minecraft-backend (скин игрока для compositing)
+
+```mermaid
+sequenceDiagram
+    actor P as Игрок
+    participant M as CosmeticsManager
+    participant B as Бэкенд
+    participant C as Клиенты (CPM)
+    P->>M: /vc equip wings
+    M->>M: есть в коллекции? слот из .bbmodel
+    M->>B: GET /api/v1/server/auth/player-skin/<ник> (кэш на сессию)
+    B-->>M: PNG скина 64×32 / 64×64 Steve / Alex
+    M->>M: наложить скин на шаблон .cpmproject
+    M->>C: разослать модель
+    M->>M: players.json — атомарно через temp-файл
 ```
 
 ---
