@@ -1,6 +1,6 @@
-# 🎨 VoidRP CPM Companion
+<p align="center"><img src=".github/assets/banner.jpg" alt="VoidRP CPM Companion" width="100%"></p>
 
-> Серверный NeoForge мод — управление косметикой через Customizable Player Models с compositing скина.
+<div align="center">
 
 ![Minecraft](https://img.shields.io/badge/Minecraft-1.21.1-brightgreen?logo=minecraft)
 ![NeoForge](https://img.shields.io/badge/NeoForge-21.1.x-orange)
@@ -8,6 +8,10 @@
 ![Requires CPM](https://img.shields.io/badge/requires-CPM_0.6%2B-blueviolet)
 [![Build](https://github.com/VOIDRP-MINECRAFT/voidrp-cpm-companion/actions/workflows/build.yml/badge.svg)](https://github.com/VOIDRP-MINECRAFT/voidrp-cpm-companion/actions/workflows/build.yml)
 ![License](https://img.shields.io/badge/license-proprietary-red)
+
+</div>
+
+> Серверный NeoForge мод — управление косметикой через Customizable Player Models с compositing скина.
 
 ---
 
